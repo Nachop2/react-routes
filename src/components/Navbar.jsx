@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export const FormularioPregunta = () => {
+export const Navbar = () => {
     return (
         <div className="navbar navbar-dark bg-dark">
             <div className="container">
