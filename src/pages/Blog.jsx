@@ -16,7 +16,7 @@ export const Blog = () => {
     }
     console.log(filteredData);
     //Find way to add condition that executes once, and does not loop infinitely
-    if (filteredData) {
+    if (false) {
         console.log("AAAAAAAAAAAAA");
         setData(data.results);
     }
@@ -24,7 +24,6 @@ export const Blog = () => {
     const handleChange = (e) => {
         setSearchParams({ filter: e.target.value });
         let term = e.target.value;
-
         //term = term.replace("(", "\\(");
         //term = term.replace(")", "\\)");
         // Regex filtering
