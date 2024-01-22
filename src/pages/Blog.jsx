@@ -12,11 +12,21 @@ export const Blog = () => {
         return (<h1> La pistola de portales no funciona... </h1>);
     }
 
-    console.log(data.results);
 
+    let filteredData = data.results.filter((e) => e);
 
     const handleChange = (e) => {
-        setSearchParams({ [e.target.name]: e.target.value });
+        setSearchParams({ filter: e.target.value });
+
+        console.log(data.results);
+        let term = e.target.value;
+        console.log(term);
+        term = term.replace("(", "\\(");
+        term = term.replace(")", "\\)");
+        // Regex filtering
+        let regexSearch = new RegExp("(" + term + ")", "ig");
+        filteredData = data.results.filter((e) => e.name.match(regexSearch));
+        console.log(filteredData);
     }
 
     return (
