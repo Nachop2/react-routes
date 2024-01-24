@@ -1,12 +1,21 @@
 import { Link, useSearchParams } from "react-router-dom";
 import { useFetch } from "../useFetch";
 import { useEffect, useState } from "react";
+import { CharactersContext } from "../App";
+import { useContext } from "react";
 export const Blog = () => {
     const [searchParams, setSearchParams] = useSearchParams();
 
-    const [filteredData, setFilteredData] = useState([]);
+    const { setCharactersList } = useContext(CharactersContext);
     const { data, error, loading } = useFetch("https://rickandmortyapi.com/api/character");
-    
+
+    // useEffect(() => {
+    //     if (data) {
+    //         setCharactersList(data.results);
+    //     }
+    // }, [data]);
+
+
     if (loading) {
         return (<h1> Buscando el Morty adecuado... </h1>);
     }
@@ -32,7 +41,7 @@ export const Blog = () => {
             </input>
             <ul className="list-group">
                 {
-                    
+
                     data.results.filter((e) => e.name.match(new RegExp("(" + searchParams.get("filter") + ")", "ig"))).map(element => {
                         return (
                             <Link className="list-group-item"
