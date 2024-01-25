@@ -27,7 +27,6 @@ export const Blog = () => {
     const handleChange = (e) => {
         setSearchParams({ filter: e.target.value });
     }
-
     return (
         <>
             <h1> Blog - Elije tu personaje favorito </h1>
@@ -41,8 +40,9 @@ export const Blog = () => {
             </input>
             <ul className="list-group">
                 {
+                    data.results.filter((e) => e.name.match(searchParams.get("filter") || "")).map(element => {
 
-                    data.results.filter((e) => e.name.match(new RegExp("(" + searchParams.get("filter") + ")", "ig"))).map(element => {
+                    //data.results.filter((e) => e.name.match(new RegExp("(" + searchParams.get("filter") + ")", "ig"))).map(element => {
                         return (
                             <Link className="list-group-item"
                                 key={element.id}
